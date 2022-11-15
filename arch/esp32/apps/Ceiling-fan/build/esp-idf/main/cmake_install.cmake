@@ -1,4 +1,4 @@
-# Install script for directory: /home/subhash/ada12/new_repo_fan/device-apps/arch/esp32/apps/air_purifier/main
+# Install script for directory: /home/subhash/ada12/Workig_code_Ceilingfan/Ceiling_Fan_App/arch/esp32/apps/Ceiling-fan/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

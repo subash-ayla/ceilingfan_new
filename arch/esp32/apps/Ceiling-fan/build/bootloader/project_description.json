@@ -1,8 +1,8 @@
 {
     "project_name":       "bootloader",
     "project_path":       "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/bootloader/subproject",
-    "build_dir":          "/home/subhash/ada12/new_repo_fan/device-apps/arch/esp32/apps/air_purifier/build/bootloader",
-    "config_file":        "/home/subhash/ada12/new_repo_fan/device-apps/arch/esp32/apps/air_purifier/sdkconfig",
+    "build_dir":          "/home/subhash/ada12/Workig_code_Ceilingfan/Ceiling_Fan_App/arch/esp32/apps/Ceiling-fan/build/bootloader",
+    "config_file":        "/home/subhash/ada12/Workig_code_Ceilingfan/Ceiling_Fan_App/arch/esp32/apps/Ceiling-fan/sdkconfig",
     "config_defaults":    "",
     "app_elf":            "bootloader.elf",
     "app_bin":            "bootloader.bin",

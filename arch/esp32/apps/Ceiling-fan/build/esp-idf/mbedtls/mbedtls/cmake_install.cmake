@@ -34,8 +34,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/subhash/ada12/new_repo_fan/device-apps/arch/esp32/apps/air_purifier/build/esp-idf/mbedtls/mbedtls/library/cmake_install.cmake")
-  include("/home/subhash/ada12/new_repo_fan/device-apps/arch/esp32/apps/air_purifier/build/esp-idf/mbedtls/mbedtls/include/cmake_install.cmake")
+  include("/home/subhash/ada12/Workig_code_Ceilingfan/Ceiling_Fan_App/arch/esp32/apps/Ceiling-fan/build/esp-idf/mbedtls/mbedtls/library/cmake_install.cmake")
+  include("/home/subhash/ada12/Workig_code_Ceilingfan/Ceiling_Fan_App/arch/esp32/apps/Ceiling-fan/build/esp-idf/mbedtls/mbedtls/include/cmake_install.cmake")
 
 endif()
 
