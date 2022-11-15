@@ -1,0 +1,22 @@
+# Name,   Type, SubType, Offset,   Size, Flags
+#
+# To allow for a larger bootloader, put the partition table at 0xe000.
+# Set that as the partition table offset in your sdconfig or Kconfig.projbuild.
+#
+# The bootloader is at 0x1000 to at most 0xdfff (52 KB).
+#    The architected bootloader max size is 48 KB + 4 KB signature = 52 KB.
+#
+phy_init, data, phy,     0x10000,  0x1000
+otadata,  data, ota,     ,  0x2000
+# 0x13000
+nvs,      data, nvs,     ,  0x60000
+# 0x73000 - 0xdf000 - reserved
+nvs_state, data, nvs,	  0xdf000, 0x10000
+log_snap, data, nvs,	  0xef000, 0x10000, encrypted
+nvs_keys, data, nvs_keys, 0xff000,  0x1000, encrypted
+ota_0,    app,  ota_0,   0x100000,  0x370000
+coredump, data, coredump, 0x470000, 0x010000, encrypted
+ota_1,    app,  ota_1,   0x480000,  0x370000
+# 0x7f0000 - 0x7fd000 - reserved
+nvs_id,   data, nvs,     0x7fd000,  0x2000
+nvs_id_keys,data,nvs_keys,0x7ff000, 0x1000, encrypted

@@ -1,0 +1,52 @@
+diff --git a/components/bootloader_support/src/esp32/secure_boot.c b/components/bootloader_support/src/esp32/secure_boot.c
+index bb293ccb06..2254b2bfa7 100644
+--- a/components/bootloader_support/src/esp32/secure_boot.c
++++ b/components/bootloader_support/src/esp32/secure_boot.c
+@@ -313,6 +313,17 @@ esp_err_t esp_secure_boot_v2_permanently_enable(const esp_image_metadata_t *imag
+         return ret;
+     }
+ 
++    /*
++     * Ayla modification: do not enable unless flash encryption is in release
++     * mode. This allows re-flashing with a different bootloader until after
++     * testing.
++     */
++    if (esp_get_flash_encryption_mode() != ESP_FLASH_ENC_MODE_RELEASE) {
++        ESP_LOGI(TAG, "flash encryption not in Release mode. "
++            "Not enabling secure boot.  Continuing..");
++        return ESP_OK;
++    }
++
+     uint8_t boot_pub_key_digest[ESP_SECURE_BOOT_DIGEST_LEN];
+     uint32_t dis_reg = REG_READ(EFUSE_BLK0_RDATA0_REG);
+     bool efuse_key_read_protected = dis_reg & EFUSE_RD_DIS_BLK2;
+diff --git a/components/bootloader_support/src/esp32c3/secure_boot.c b/components/bootloader_support/src/esp32c3/secure_boot.c
+index cdc89f8b80..d1ecd435b4 100644
+--- a/components/bootloader_support/src/esp32c3/secure_boot.c
++++ b/components/bootloader_support/src/esp32c3/secure_boot.c
+@@ -24,6 +24,7 @@
+ #include "esp_rom_crc.h"
+ #include "esp_efuse.h"
+ #include "esp_efuse_table.h"
++#include "esp_flash_encrypt.h"
+ 
+ #include "esp32c3/rom/efuse.h"
+ #include "esp32c3/rom/secure_boot.h"
+@@ -248,6 +249,17 @@ esp_err_t esp_secure_boot_v2_permanently_enable(const esp_image_metadata_t *imag
+         return ESP_OK;
+     }
+ 
++    /*
++     * Ayla modification: do not enable unless flash encryption is in release
++     * mode. This allows re-flashing with a different bootloader until after
++     * testing.
++     */
++    if (esp_get_flash_encryption_mode() != ESP_FLASH_ENC_MODE_RELEASE) {
++        ESP_LOGI(TAG, "flash encryption not in Release mode. "
++            "Not enabling secure boot.  Continuing..");
++        return ESP_OK;
++    }
++
+     esp_efuse_batch_write_begin(); /* Batch all efuse writes at the end of this function */
+ 
+     esp_err_t key_state = check_and_generate_secure_boot_keys(image_data);

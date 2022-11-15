@@ -1,0 +1,7 @@
+source "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/efuse/Kconfig"
+source "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp32c3/Kconfig"
+source "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_common/Kconfig"
+source "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_system/Kconfig"
+source "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/log/Kconfig"
+source "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/newlib/Kconfig"
+source "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/spi_flash/Kconfig"

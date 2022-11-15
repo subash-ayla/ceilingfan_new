@@ -1,0 +1,25 @@
+# Name,   Type, SubType, Offset,   Size, Flags
+#
+# Note: if you change the phy_init or app partition offset,
+# make sure to change the offset in Kconfig.projbuild
+#
+# To allow for a larger bootloader, put the partition table at 0xe000.
+# Set that as the partition table offset in your sdconfig or Kconfig.projbuild.
+#
+# The bootloader is at 0x1000 (or 0 on ESP32C3) to at most 0xdfff (52 KB).
+#    The architected bootloader max size is 48 KB + 4 KB signature = 52 KB.
+#
+# Name,   Type, SubType, Offset,   Size, Flags
+# The partition table is at 0xe000.
+phy_init, data, phy,        0xf000,   0x1000
+ota_0,    app,  ota_0,    0x010000, 0x180000
+ota_1,    app,  ota_1,    0x190000, 0x180000
+nvs,      data, nvs,      0x310000,  0x60000
+nvs_keys, data, nvs_keys, 0x370000,   0x1000, encrypted
+log_snap, data, nvs,      0x371000,   0x8000, encrypted
+coredump, data, coredump, 0x379000,  0x10000, encrypted
+# free area: 0x389000 to 0x3fb000 = 8K
+otadata,  data, ota,      0x38b000,   0x2000
+# nvs_id is optional save area for critical config items
+nvs_id,   data, nvs,      0x3fd000,   0x2000
+nvs_id_keys,data,nvs_keys,0x3ff000,   0x1000, encrypted

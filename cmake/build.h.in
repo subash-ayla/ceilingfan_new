@@ -1,0 +1,14 @@
+#ifndef ${BUILD_PREFIX}_DATE
+#define ${BUILD_PREFIX}_DATE "${BUILD_DATE}"
+#define ${BUILD_PREFIX}_TIME "${BUILD_TIME}"
+#define ${BUILD_PREFIX}_TYPE "${BUILD_TYPE}"
+#define ${BUILD_PREFIX}_TYPE_${BUILD_TYPE}
+#define ${BUILD_PREFIX}_VERSION "${SCM_REV}"
+#define ${BUILD_PREFIX}_SUFFIX "${BUILD_SUFFIX}"
+#endif
+#ifndef APP_NAME
+#define APP_NAME "${CMAKE_PROJECT_NAME}"
+#endif
+#ifndef APP_VER
+#define APP_VER "${APP_VER}"
+#endif

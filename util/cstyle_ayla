@@ -1,0 +1,18 @@
+#! /bin/bash
+
+if [ $# -lt 1 ]
+then
+	echo "$0: usage $0 <file>..." 2>&1
+	exit 1
+fi
+
+checkpatch=checkpatch_ayla
+if [ -n "$REPO_ROOT" -a -f $REPO_ROOT/util/checkpatch_ayla ]
+then
+	checkpatch=$REPO_ROOT/util/checkpatch_ayla
+fi
+
+for file
+do
+	$checkpatch --strict --terse --summary-file --no-tree -f $file
+done

@@ -1,0 +1,325 @@
+Release Notes for Productized Host Applications
+
+*** INTERNAL VERSION: not for release: Ayla Proprietary ****
+
+led_bulb-1.1 TBD
+	Includes fixes up to led_bulb-1.0.9
+	DEVAPP-727 led_bulb: add GPIO and driver pin-out configurability
+	DEVAPP-842 show config hash in 'conf id' CLI output, if present
+	DEVAPP-863 Ayla demo bulb: add color calibration to config file
+
+led_strip-config-1.0.10.1
+	DEVAPP-976 led_strip config: reduce white calibration to 72%
+
+dimmer-1.0.10:
+	DEVAPP-670 dimmer: FTM error blink count hard to distinguish
+		slow blinks down to 1 every 300 ms, repeating every 3 seconds
+		turn off level LEDs when blinking errors
+	DEVAPP-798 dimmer touchpad: improve touchpad responsiveness
+		configure for new PCBA pinout for better touchpad connections
+		improved touchpad noise rejection
+		fixed CPU frequency at 80 MHz to reduce touchpad interference
+	DEVAPP-961 dimmer brightness was not always gradually changed
+	DEVAPP-977 dimmer touchpad: respond instantaneously to touches
+
+led_bulb-1.0.10: 2021-08-24
+	DEVAPP-670 led_bulb: FTM error blink count hard to distinguish
+		slow blinks down to 1 every 300 ms, repeating every 3 seconds
+	DEVAPP-869 color bulb: CW not on sometimes: workaround for SM2135E
+	DEVAPP-938 factory reset is too easy in the factory.
+		Only count power-on resets towards factory reset sequence.
+		Reset the reboot counter if a console is connected in FTM.
+	DEVAPP-842 show config hash from app_pkg in "conf id" if present
+	DEVAPP-920 check for proper ADA version in device-app builds
+	DEVAPP-950 FTM color bulb fails with 6 blinks (i2c errors)
+		Retry up to 5 times on i2c errors.
+	DEVAPP-951 FTM color bulb skips colors during aging
+		Send each command 3 times for SM2135E.
+	DEVAPP-952 FTM: devices fail with 3 blinks (DHCP error)
+		Release the DHCP lease before indicating success.
+
+led_strip-1.0.10:
+	DEVAPP-842 show config hash from app_pkg in "conf id" if present
+	DEVAPP-952 FTM: devices fail with 3 blinks (DHCP error)
+		Release the DHCP lease before indicating success.
+
+smart_plug-1.0.7:
+	DEVAPP-842 show config hash from app_pkg in "conf id" if present
+	DEVAPP-952 FTM: devices fail with 3 blinks (DHCP error)
+		Release the DHCP lease before indicating success.
+
+smart_strip-1.0.7
+	DEVAPP-842 show config hash from app_pkg in "conf id" if present
+	DEVAPP-952 FTM: devices fail with 3 blinks (DHCP error)
+		Release the DHCP lease before indicating success.
+
+dimmer-1.0.9: TBD
+	DEVAPP-709 dimmer: low-current dimmable LED bulbs flicker
+	DEVAPP-854 dimmer: low-wattage bulb appears off at 1% brightness
+
+dimmer-1.0.8: 2021-04-29
+	Fixes:
+	DEVAPP-824 some brightness levels hard to reach with touchpads
+	DEVAPP-830 dimmer reboots with continuous touches and debug logging
+	DEVAPP-831 dimmer reacts to false touches on touchpads
+
+1.0.9: 2021-04-28
+	Enhancements:
+	DEVAPP-834: led_strip: set white level to 95% in config for power limit.
+	DEVAPP-834: bulb, led_strip: config color calibration to g 70 b 75.
+	DEVAPP-843: Change to version to distinguish new configurations
+
+1.0.8: 2021-04-07
+	Enhancements:
+	DEVAPP-813: led_bulb and led_strip: add gamma correction support
+
+1.0.7: 2021-02-18
+	Fixes:
+	DEVAPP-818: dimmer: FTM error status LED blinks are reversed
+	DEVAPP-815: dimmer: status LED blinks forever if not provisioned
+	DEVAPP-819: dimmer: FTM brightness was 100 instead of 50
+	DEVAPP-797: dimmer: simplify FTM procedure and result patterns
+	DEVAPP-793: led_strip: add CLI to configure relative LED levels
+	DEVAPP-794: bulb: add CLI to adjust relative LED brightness for
+			color calibration
+	DEVAPP-796: dimmer; light appears off below about 10% brightness
+	DEVAPP-716: pstrip: correct blink pattern after FTM exit by reset
+	DEVAPP-722: dimmer: FTM: success blink pattern not to spec
+	DEVAPP-721: dimmer: FTM: correct blink pattern after FTM exit by reset
+	DEVAPP-792: led_strip: add calibration for white level and for FTM
+	DEVAPP-795: bulb: extend factory-reset power-on maximum time to 3 s
+	DEVAPP-717: bulb: fixes to FTM LED blink patterns
+	DEVAPP-790: bulb startup time > 500ms when power cycled when bulb is off
+	DEVAPP-691: dimmer causes bulb flickering at 100%
+	DEVAPP-781: dimmer touchpad loses sensitivity over time
+	DEVAPP-710: pstrip doesn't set outlets to default after factory reset
+
+1.0.6: 2021-02-18
+	Fixes:
+	DEVAPP-685: led-strip: invalid mode value was echoed to cloud
+	DEVAPP-585, DEVAPP-684: added config for color calibration
+	DEVAPP-699: pstrip: FTM blinks 4 Hz instead of 1Hz per the spec
+	DEVAPP-691: dimmer: bulb flickers at 100
+	DEVAPP-697: dimmer: triac ready event occurs many times
+	DEVAPP-696: dimmer: setting power 1 when already 1 causes fade up
+	DEVAPP-693: dimmer: fix wrong gradual change after touchpad change
+	DEVAPP-695: dimmer: brightness prop not retained over power cycle
+	DEVAPP-689: dimmer: touch pads active when power off
+	DEVAPP-454: dimmer: touchpad improvements
+	DEVAPP-680: led-bulb: invalid mode value was echoed to cloud
+	DEVAPP-686: led-strip: turns off before restoring settings on reset
+	DEVAPP-688: pstrip: Status LED doesn't reflect the connection state
+
+1.0.5: 2021-02-13
+	Enhancements:
+	DEVAPP-661: CTC Firedome: incorporated Firedome 1.1.13.
+	DEVAPP-651: color: common color code log improvements
+	Fixes:
+	DEVAPP-659: libapp wifi: ignore restart failed events
+	DEVAPP-657: BLE Wi-Fi setup: extend timeout when paired
+	DEVAPP-658: A small LED off period is seen after provisioning
+		    blinks and before device outlet status is reflected.
+	DEVAPP-652: plug: LEDs don't flash after power-cycling the plug
+		    when AP is off
+	DEVAPP-655: dimmer doesn't set the properties to the defaults on
+		    factory reset
+	DEVAPP-618: dimmer often leaves the light on after pressing button
+	DEVAPP-649: allow UART to be disabled from CLI
+	DEVAPP-638: DHCP hostname prefix configuration mismatched code
+	DEVAPP-653: CLI: use printcli() instead of printf()
+	DEVAPP-646: PHA: use host app version as module version as well
+	DEVAPP-653: CLI commands from cloud not run if CLI is disabled
+	DEVAPP-631: Power Strip Status LED flashing intervals corrected
+	DEVAPP-633: LED Strip: color setting is reapplied incorrectly
+	DEVAPP-599: TWB: FTM device test sequence not matching spec
+	DEVAPP-672: dimmer: remove unnecessary debug from triac code.
+	DEVAPP-454: dimmer: improve touchpad: replace touchpad driver
+	DEVAPP-613: dimmer: correct FTM as per spec
+	DEVAPP-669: wifi: watchdog causes reset if Wi-Fi not configured
+	DEVAPP-665: led_bulb: not blinking in provisioning mode
+
+1.0.4: 2021-01-21
+	Enhancements:
+	DEVAPP-634: BLE FTM: don't advertise provisioning in factory test mode
+	DEVAPP-637: config: add OEM info to "conf id" output
+	DEVAPP-609: ledstrip fading at 4 steps per 4ms. 100% fading over 1 sec
+	DEVAPP-527: allow FTM re-enable if FTM Wi-Fi AP present with right key
+	DEVAPP-568: libapp: add support for remote commands
+	Fixes:
+	DEVAPP-630: led_bulb: sometimes coloe change via NOMA is immediate
+	DEVAPP-640: dimmer: provisioning blink clears level/power LED
+	DEVAPP-639: dimmer: long press not sensed in factory test mode
+	DEVAPP-632: Smart Plug: LED flash interval incorrect when AP not found
+	DEVAPP-566: LED-strip: out of range properties entered from iAura are
+		    rejected by device but sent to cloud in reverse order.
+	DEVAPP-593: removing extra property update to cloud for power property
+	DEVAPP-531: prod_scripts: remove special-case for BLE Coex message
+	DEVAPP-551: production script gets decode error from UART noise
+	DEVAPP-575: led_bulb out of range values received from mobile are
+		    rejected to the mobile, but submitted to the cloud
+	DEVAPP-629: dimmer - FTM step 1 LED sequence incorrect: Modified
+	DEVAPP-580: led_bulb A19 tunable when power up in provisioning mode
+		    briefly goes white and then yellow before starting blinking.
+	DEVAPP-602: color bulb - provisioning blinks white with color on
+	DEVAPP-501: smart_plug doesn't restore night_mode to default value
+		    after factory reset
+	DEVAPP-586: CTC pstrip was slowly blinking after 5 min in provisioning
+	DEVAPP-569: smart_plug hadn't restored saved settings after the
+		    power cycle before connecting to the cloud
+	DEVAPP-512: CLI "factory reset" doesn't clear FTM
+	DEVAPP-620: allow multiple factory reset callbacks
+	DEVAPP-616: NS_PROVISIONING_STOPPED misreported as NS_IDLE state.
+	DEVAPP-603: ledstrip match blink pattern to ble advertising of 5 mins
+	DEVAPP-588: pstrip turns on after the factory reset
+	DEVAPP-481: dimmer missing signal on OR input should log warning
+	DEVAPP-565: ledstrip power 0 could not change mode white to color
+	DEVAPP-570: white bulb - bluetooth timeout should be 3 minutes
+	DEVAPP-524: FTM: use test_connect for ADA connections while FTM enabled
+
+1.0.3: 2020-12-10
+	Enhancements:
+	DEVAPP-527: FTM - keep most of FTM config when disabling FTM
+	DEVAPP-540: smart_plug FTM modifications
+	DEVAPP-529: FTM - white bulbs - reduce brightness at aging test end
+	DEVAPP-539: FTM - bulb aging test modifications
+	DEVAPP-530: led bulb - stop flashing when provisioning times out
+	DEVAPP-499: libapp_bt: add timeout for BLE Wi-Fi provisioning
+	Fixes:
+	DEVAPP-541: led_strip power prop not changed to 1 after power loss
+	DEVAPP-502: smartplug properties not restored after connection loss
+	DEVAPP-508: conf value persist fix for outlet 2 with single button
+	DEVAPP-507: CTC - white bulb - power on level is 99.97%
+	DEVAPP-536: Update template version to enable auto-echo
+	DEVAPP-511: led_bulb <power:0> value not retained on module's reset
+
+1.0.2: 2020-12-08
+	Fixes:
+	DEVAPP-483: brightness not gradual when power changes from 0 to 1
+	DEVAPP-520: prod_pkg-0.7 didn't find prod_tool.py as usually run
+	DEVAPP-471: ledstrip min color saturation value changed to 0 from 1
+	DEVAPP-464: ledstrip short press button should save power value in conf
+	DEVAPP-486: ledstrip dimming effect on white mode fixed
+	DEVAPP-480: dimmer gradual brightness change applied when power:0
+	DEVAPP-487: dimmer touch pads were activated at power:0
+	DEVAPP-465: ledstrip power 0 value is not retained on module reset
+	DEVAPP-508: smartplug button press does not persist value in config
+	DEVAPP-526: CTC dimmer brightness change from touchpad not persisted
+	DEVAPP-485: firedome: send to ADS only, not to LANs
+	DEVAPP-528: FTM config: reduce FTM min RSSI to -60
+
+1.0.1: 2020-12-03
+	Fixes:
+	DEVAPP-454: CTC dimmer touchpad improvements
+	DEVAPP-494: Firedome prop sent when firedome disabled
+	DEVAPP-495: CTC ledbulb cannot initialize ble until blink stops
+	DEVAPP-505: tunable bulbs: restore both PWM channels after blinks
+	DEVAPP-507: CTC - white bulb - duty cycle not 100% when it should be
+	DEVAPP-513: libapp: move banner message print to after console init
+	DEVAPP-492: extend single white burn in to 30 mins
+	DEVAPP-500: CLI "conf id" module maker requests no space after app name
+	DEVAPP-489: CTC production scripts should check eFuses first
+	DEVAPP-490: CTC - color bulb - LED test leaves WW on during R/G/B phase
+	DEVAPP-490: CTC - color bulb - LED test leaves B on during WW/CW phase
+
+1.0-PVT-rc1
+	Fixes:
+	DEVAPP-400 all apps: reduce boot time (prevents OTAs to alpha5)
+	DEVAPP-404 smart_plug: replace ftm_run with ftm_poll
+	DEVAPP-406 led_strip: replace ftm_run with ftm_poll
+	DEVAPP-407 led_bulb: FTM change first step from 1 s to 5 s CW.
+	DEVAPP-410 firedome: update to firedome 1.1.7
+	DEVAPP-411 firedome: echo back empty value for firedome_to_device
+	DEVAPP-413 smart_plug: ftm handle single-button correctly
+	DEVAPP-414 smart_plug: ftm error code correction
+	DEVAPP-415 firedome: don't queue property if ADS is down
+	DEVAPP-417 sync time to RTC before reset
+
+	Enhancements:
+	DEVAPP-3 secure boot: enabled after FTM disabled
+	DEVAPP-356 prod: update OEM models to point to field
+	DEVAPP-390 prod: allow prod packages to reflash modules
+	DEVAPP-421 prod: remove fixed setup_mode enable key
+
+1.0-alpha5: 2020-11-17 ID f61d19b TBD
+	Fixes:
+	DEVAPP-118 dimmer: touch pads more sensitive
+	DEVAPP-132 dimmer: power and status LEDs swapped
+	DEVAPP-285 led_bulb: add correct log levels
+	DEVAPP-303 led_bulb: factory aging test fixes
+	DEVAPP-309 led_bulb: may leave WW on during blinks
+	DEVAPP-321 led_strip: replaced color algorithms
+	DEVAPP-325 led_bulb: FSL reporting light jitter
+	DEVAPP-334 dimmer: triac not initialized before use
+	DEVAPP-337 libapp_bt: construct BLE device name from variant
+		part of MAC addr
+	DEVAPP-348 dimmer: change factory reset to 10 second press
+	DEVAPP-362 dimmer: swap touch pads T1 and T4
+		matching spec 1.0-draft5
+	DEVAPP-344 dimmer: doesn't send back datapoint after
+		out-of-range value received
+	DEVAPP-354 color bulb: swap WW/CW outputs to match devices
+	DEVAPP-355 led_bulb: should be on after provisioning fails
+	DEVAPP-359 dimmer: 100% brightness sets wrong level LED
+	DEVAPP-377 conf save and factory reset were very slow
+	DEVAPP-379 dimmer: fix conversion of ms to ticks
+	DEVAPP-380 smart_plug: fix conversion of ms to ticks
+	DEVAPP-381 starter_app: converting ms to ticks incorrectly
+	DEVAPP-398 led_bulb: red and blue LEDs swapped
+	DEVPAP-392 template version changes to drop alpha suffix
+	DEVAPP-399 led_bulb: double gradual time, make change interval shorter
+
+	Enhancements:
+	DEVAPP-13 libafd: add Firedome to all apps
+	DEVAPP-251 dimmer: gradual change of brightness
+	DEVAPP-265 libapp: erase OTA partition if validation fails
+	DEVAPP-299 FTM: Wi-Fi test for factory test mode
+	DEVAPP-300 FTM: connectivity test for factory test mode
+	DEVAPP-302 smart_plug: factory aging test
+	DEVAPP-305 smart_plug: factory test mode
+	DEVAPP-306 led_strip: factory test mode
+	DEVAPP-307 power_strip: factory test mode
+	DEVAPP-308 dimmer: factory test mode
+	DEVAPP-351 libapp: power management - enable on apps
+	DEVAPP-351 libapp: use frequency scaling to improve startup time
+	DEVAPP-356 prod_pkg: update OEM models to point to field (config only)
+	DEVAPP-378 prod_pkg: remove dependency on ESP-IDF repo
+	DEVAPP-385 change to use module OTAs instead of host OTAs.
+
+1.0-dimmer-alpha2:  2020-10-20 ID 41f5727 (dimmer only)
+1.0-alpha4:         2020-10-20 ID 41f5727 (dimmer not included)
+	Fixes:
+	DEVAPP-250 dimmer: persist property values
+	DEVAPP-252 dimmer: add range checking of brightness
+	DEVAPP-280 led_strip: power, mode change, make not gradual
+	DEVAPP-281 led_bulb: bootup timing improvement
+	DEVAPP-288 ledstrip: leave on after short provision blinks
+	DEVAPP-295 libapp: enabling setup from clode fails
+	DEVAPP-298 led_bulb: fix current config parsing
+	DEVAPP-313 libapp: add WPA3 support
+
+	Enhancements:
+	DEVAPP-14 libapp: logging: incorporate ESP-IDF logs into
+		Ayla logs
+	DEVAPP-132 power strip: configure number of outlets, buttons
+	DEVAPP-256 libapp: add CLI disable configuration:
+		fix 'cli show output'
+	DEVAPP-269 libapp: add support for disabling UART IO pins
+	DEVAPP-296 libpha: add factory test framework
+	DEVAPP-297 led_bulb: add factory test mode
+	DEVAPP-302 led_bulb: color aging test
+	DEVAPP-310 smart_plug: improve timer design (internal)
+	DEVAPP-314 led_bulb: add support for SM2135E chip
+	DEVAPP-315 smart_plug: LED indication for factory reset
+		trigger
+	DEVAPP-329 libapp: enable Wi-Fi power savings
+	DEVAPP-330 libapp: decrease CPU freq. to reduce standby power
+
+1.0-alpha3: 2020-10-07 ID f329feb
+	Enhancements
+	Fixes
+
+1.0-alpha2: 2020-10-13
+	Enhancements
+	Fixes
+
+1.0-alpha: 2020-10-01

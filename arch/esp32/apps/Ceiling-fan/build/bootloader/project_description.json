@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/bootloader/subproject",
+    "build_dir":          "/home/subhash/ada12/new_repo_fan/device-apps/arch/esp32/apps/air_purifier/build/bootloader",
+    "config_file":        "/home/subhash/ada12/new_repo_fan/device-apps/arch/esp32/apps/air_purifier/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v4.3.2-dirty",
+    "target":             "esp32c3",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "riscv32-esp-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/efuse/Kconfig;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp32c3/Kconfig;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_common/Kconfig;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_system/Kconfig;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/log/Kconfig;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/newlib/Kconfig;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/bootloader/Kconfig.projbuild;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esptool_py/Kconfig.projbuild;/home/subhash/ada12/esp/esp-idf-v4.3.2/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32c3", "esp_common", "esp_hw_support", "esp_rom", "esp_system", "esptool_py", "hal", "log", "main", "micro-ecc", "newlib", "partition_table", "riscv", "soc", "spi_flash", "" ],
+    "build_component_paths" : [ "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/bootloader", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/bootloader_support", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/efuse", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp32c3", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_common", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_hw_support", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_rom", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esp_system", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/esptool_py", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/hal", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/log", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/bootloader/subproject/main", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/bootloader/subproject/components/micro-ecc", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/newlib", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/partition_table", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/riscv", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/soc", "/home/subhash/ada12/esp/esp-idf-v4.3.2/components/spi_flash", "" ]
+}

@@ -1,0 +1,2 @@
+--flash_mode dio --flash_freq 80m --flash_size 4MB  $<IF:$<BOOL:$<TARGET_PROPERTY:encrypted-otadata-flash,NON_ENCRYPTED_IMAGES>>,,--encrypt>
+0x38b000 ota_data_initial.bin

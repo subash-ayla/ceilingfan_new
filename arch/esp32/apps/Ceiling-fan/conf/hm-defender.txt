@@ -1,0 +1,89 @@
+#
+# Copyright 2020 Ayla Networks, Inc.  All rights reserved.
+#
+# Config for Health-Mor defender air purifier
+#
+# See app/starter_app/conf/prod_config.txt for example config.
+#
+
+#
+# The expected Ayla model number
+#
+verify_id "model" AY028MCA1
+
+#
+# The expected module model number and version.
+#
+verify_id "mfg_model" ESP32-C3-WROOM-02
+conf sys/mfg_model ESP32-C3-WROOM-02
+
+#
+# set chip type for production scripts
+#
+prod chip esp32c3
+#
+# set partition table version for the production scripts
+#
+prod partition_ver 2
+
+#
+# Optional re-enable key - advisable during development testing.
+# This key must be first if re-configuring from user mode.
+# If nothing is entered, a secret key is generated based on OEM and OEM-model.
+# WARNING: using this feature allows end-users to re-enable setup mode.
+#
+# conf app/setup_mode/key --your-enable-key-here--
+
+#
+# OEM ID, OEM model, and OEM secret.
+# This order is important.
+#
+conf oem/oem	75d46c04		# Health-Mor
+conf oem/model	hm-defender
+conf oem/key	--your-OEM-secret--
+
+#
+# DHCP hostname prefix
+#
+conf app/host/prefix HM-defender-airp
+
+#
+# BLE hostname and key.
+#
+conf bt/hostname HMapdf-%4
+conf bt/key -1		# no key
+
+#
+# CLI enable:
+# 1 if CLI is to be locked on, 0 to be locked off, empty to allow
+# user mode to disable.
+# If it is locked off, it can be re-enabled only from the cloud,
+# and then only if Wi-Fi setup works, so be careful.
+# If it is not locked on, it can be locked off in user mode, so
+# be careful about that, too.
+#
+conf app/cli/enable	1
+
+#
+# Add any needed application-specific settings here.
+#
+
+
+#
+# Factory test mode settings
+# Note: ADS test is off, BT test configured but not yet implemented.
+#
+conf app/ftm/enable	1
+conf app/ftm/p0/ssid	factory-test
+conf app/ftm/p1/ssid	factory-test-dryrun
+conf app/ftm/p0/key	fact-or-fiction?
+conf app/ftm/p1/key	fact-or-fiction?
+conf app/ftm/rssi_min	-60		# min WiFi signal strength
+conf app/ftm/scan_time	10		# max seconds for scan (default 30)
+conf app/ftm/ads_time	0		# max seconds for connect (0 is off)
+conf app/ftm/ble_time	30		# max seconds for bluetooth (TBD)
+
+#
+# Disable setup mode as the last step.
+#
+conf sys/setup_mode	0

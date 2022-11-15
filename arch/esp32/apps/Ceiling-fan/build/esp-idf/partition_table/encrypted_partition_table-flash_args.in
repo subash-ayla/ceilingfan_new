@@ -1,0 +1,2 @@
+--flash_mode dio --flash_freq 80m --flash_size 4MB  $<IF:$<BOOL:$<TARGET_PROPERTY:encrypted-partition_table-flash,NON_ENCRYPTED_IMAGES>>,,--encrypt>
+0xe000 partition_table/partition-table.bin

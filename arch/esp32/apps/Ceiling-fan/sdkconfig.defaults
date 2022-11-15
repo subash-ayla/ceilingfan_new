@@ -1,0 +1,2 @@
+# This file must exist in order for idf.py to read the defaults for the target.
+# This file could contain defaults common to all target platforms.

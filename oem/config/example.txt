@@ -1,0 +1,53 @@
+#
+# OEM configuration for starter_app.
+#
+# The format of individual config settings is name and value on same line,
+# separated by spaces or tabs.
+# The value must be quoted if it contains spaces.
+#
+
+#
+# Optional re-enable key - advisable during development testing.
+# This key must be first if redoing configuraiton from user mode.
+# Pick something unique to this OEM or to the device.
+# WARNING: using this feature allows end-users to re-enable setup mode.
+#
+app/setup_mode/key "secret-key"
+
+#
+# A new secret key can be applied if redoing the configuration
+#
+app/setup_mode/key "new-secret-key"
+
+#
+# OEM ID, OEM model, and OEM secret.
+# This order is important.
+#
+oem/oem		"<OEM ID>"
+oem/model	"<OEM model>"
+oem/key		"<OEM secret>"
+
+#
+# Wi-Fi settings - disable the AP mode profile.
+#
+wifi/profile/10/enable 0
+
+#
+# CLI enable:
+# 1 if CLI is to be locked on, 0 to be locked off, "" to allow
+# user mode to disable.
+# If it is locked off, it can be re-enabled only from the cloud,
+# and then only if Wi-Fi setup works, so be careful.
+# If it is not locked on, it can be locked off in user mode, so
+# be careful about that, too.
+#
+app/cli/enable 1
+
+# Add any needed application-specific settings here.
+
+#app/setting1	1
+
+#
+# Disable setup mode as the last step.
+#
+sys/setup_mode 0
