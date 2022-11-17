@@ -90,16 +90,6 @@ static void app_first_connect(void)
 
 	ada_sprop_send_by_name("oem_host_version");
 	ada_sprop_send_by_name("version");
-
-	/* Update local status to cloud */
-	ada_sprop_send_by_name("mode");
-	ada_sprop_send_by_name("power");
-
-	/* Send parts from-device props to cloud */
-	ada_sprop_send_by_name("filter_installed_date");
-	ada_sprop_send_by_name("filter_hours_used");
-	ada_sprop_send_by_name("filter_status");
-	ada_sprop_send_by_name("filter_max_life");
 }
 
 /*

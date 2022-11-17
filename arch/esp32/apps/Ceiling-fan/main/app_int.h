@@ -18,7 +18,7 @@
  *	Hisense A/C AY028MHA1
  *	Air Purifier	AY028MCA1
  */
-#define APP_MODULE_PN	"AY028MCA1"
+#define APP_MODULE_PN	"AY008ESP1"
 
 /*
  * Count of schedules and name format.

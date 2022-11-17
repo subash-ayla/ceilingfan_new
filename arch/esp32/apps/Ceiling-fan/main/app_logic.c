@@ -23,6 +23,9 @@
 #include <libapp/debounce.h>
 #include <ayla/log.h>
 #include <ayla/timer.h>
+#ifdef AYLA_FIREDOME_SUPPORT
+#include <ayla_firedome/libafd.h>
+#endif
 #include "app_int.h"
 #include "math.h"
 #include "esp_types.h"
@@ -518,58 +521,6 @@ static int app_cmd_date(char *date1, char *date2)
 	}
 
 	return 0;
-}
-/*
-- set filter_serial_number
-- set filter_status = 0
-- set filter_hours_used = 0
-- set filter_installed_date to current date
-- reset filter_used timer
-if (the purifier is connected to Cloud)
-	update new property values to cloud
-else
-	store/batch the filter_hours_used values as an array in flash
-fi
-*/
-static void app_ac_netstatus(enum libapp_net_status status)
-{
-	log_put(LOG_INFO "%s: status=%d", __func__, status);
-	switch (status) {
-	case NS_IDLE:
-		wifi_connected = 0;
-		wifi_rssi = 0;
-		break;
-	case NS_PROVISIONING:
-		app_timer_set(&wifi_led_timer, 0);
-		break;
-	case NS_PROVISIONING_STOPPED:
-		app_timer_cancel(&wifi_led_timer);
-		if (wifi_connected) {
-			gpio_set_level(GPIO_OUT_LED_WIFI, 1);
-		} else {
-			gpio_set_level(GPIO_OUT_LED_WIFI, 0);
-		}
-		break;
-	case NS_ASSOCIATING:
-		break;
-	case NS_ASSOCIATED:
-		wifi_connected = 1;
-		app_timer_cancel(&wifi_led_timer);
-		gpio_set_level(GPIO_OUT_LED_WIFI, 1);
-		adap_net_get_signal(&wifi_rssi);
-		break;
-	case NS_CONNECTED:
-		wifi_connected = 1;
-		app_timer_cancel(&wifi_led_timer);
-		gpio_set_level(GPIO_OUT_LED_WIFI, 1);
-		adap_net_get_signal(&wifi_rssi);
-		ada_sprop_send_by_name("wifi_rssi");
-		break;
-	case NS_DISCONNECTED:
-		break;
-	default:
-		break;
-	}
 }
 static void app_up_button_press(void)
 {
@@ -1194,47 +1145,8 @@ void app_logic_init(void)
 	int len;
 	struct timeval tv;
 	struct clock_info clk;
-
-	len = libapp_conf_get_string(CFG_FILTER_USED,
-		used_str, sizeof(used_str));
-	if (len <= 0) {
-		log_put(LOG_INFO "%s: %s Conf Read Error",
-			__func__, CFG_FILTER_USED);
-		filter_hours_used = 0;
-	} else {
-		filter_hours_used = atoi(used_str);
-	}
-
-	len = libapp_conf_get_string(CFG_FILTER_INSTALLED,
-		filter_installed_date, sizeof(filter_installed_date));
-	if (len <= 0) {
-		log_put(LOG_INFO "%s: %s Conf Read Error",
-			__func__, CFG_FILTER_INSTALLED);
-		memset(filter_installed_date, 0, sizeof(filter_installed_date));
-		gettimeofday(&tv, NULL);
-		clock_fill_details(&clk, tv.tv_sec);
-		snprintf(filter_installed_date, sizeof(filter_installed_date),
-			"%2.2u/%2.2u/%4.4lu", clk.month, clk.days, clk.year);
-	}
-
-	len = libapp_conf_get_string(CFG_FILTER_SERIALNO,
-		filter_serial_number, sizeof(filter_serial_number));
-	if (len <= 0) {
-		log_put(LOG_INFO "%s: %s Conf Read Error",
-			__func__, CFG_FILTER_SERIALNO);
-		memset(filter_serial_number, 0, sizeof(filter_serial_number));
-	}
-
 	ayla_timer_init(&ftm_step_timer, app_ftm_step_timeout);
 	ayla_timer_init(&ftm_stop_timer, app_ftm_stop_timeout);
-	/*ayla_timer_init(&wifi_led_timer, app_wifi_led_1hz_timeout);
-	ayla_timer_init(&filter_used_timer, app_filter_used_timeout);
-	ayla_timer_init(&filter_led_timer, app_filter_led_timeout);
-	ayla_timer_init(&filter_reset_timer, app_filter_reset_timeout);
-	ayla_timer_init(&up_long_pressed_timer,
-		app_up_long_pressed_timeout);
-	ayla_timer_init(&down_long_pressed_timer,
-		app_down_long_pressed_timeout);*/
 }
 
 /*
@@ -1254,7 +1166,7 @@ void app_logic_prop_init(void)
 	prop_lock_init();
 	ada_sprop_mgr_register("airp",
 	    app_logic_props, ARRAY_LEN(app_logic_props));
-	libapp_net_event_register(app_ac_netstatus);
+	/*libapp_net_event_register(app_ac_netstatus);*/
 
 	app_gpio_port_init();
 	app_set_init_ftm_status();

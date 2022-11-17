@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 set(APP_NAME Ceiling_Fan_app)
-set(APP_VER 1.1.1)
+set(APP_VER 1.0)
 #set(ADA_MIN_VERSION 1.11)
 #set(ADA_REQUIRED_REV "df84ae5fd")
 set(ADA_REQUIRED_REV "e3f51f06c")
@@ -26,10 +26,10 @@ idf_build_set_property(COMPILE_OPTIONS "-DAYLA_LOG_COREDUMP" APPEND)
 idf_build_set_property(COMPILE_OPTIONS "-DAYLA_LOG_SNAPSHOTS" APPEND)
 # idf_build_set_property(COMPILE_OPTIONS "-DAYLA_LOCAL_CONTROL_SUPPORT" APPEND)
 # idf_build_set_property(COMPILE_OPTIONS "-DAYLA_FILE_PROP_SUPPORT" APPEND)
-idf_build_set_property(COMPILE_OPTIONS "-DAYLA_PRODUCTION_AGENT" APPEND)
+#idf_build_set_property(COMPILE_OPTIONS "-DAYLA_PRODUCTION_AGENT" APPEND)
 
 #
 # For productized-host apps, define LIBAPP_OTA_MODULE to use only module OTAs.
 # Leave this commented out during development to use only host OTAs.
 #
-idf_build_set_property(COMPILE_OPTIONS "-DLIBAPP_OTA_MODULE" APPEND)
+#idf_build_set_property(COMPILE_OPTIONS "-DLIBAPP_OTA_MODULE" APPEND)
